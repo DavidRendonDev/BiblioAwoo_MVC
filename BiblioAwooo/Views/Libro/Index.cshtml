@@ -1,0 +1,70 @@
+@model IEnumerable<BibliotecaMVC.Models.Libro>
+
+<h1>Gestión de Libros</h1>
+
+@if (ViewBag.Error != null)
+{
+    <div>@ViewBag.Error</div>
+}
+
+<div class="row">
+
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="Create" method="post">
+                    <div class="mt-3 d-flex flex-column">
+                        <label>Título</label>
+                        <input type="text" class="form-control" name="Titulo">
+                    </div>
+
+                    <div class="mt-3 d-flex flex-column">
+                        <label>Autor</label>
+                        <input type="text" class="form-control" name="Autor">
+                    </div>
+
+                    <div class="mt-3 d-flex flex-column">
+                        <label>Código</label>
+                        <input type="text" class="form-control" name="Codigo">
+                    </div>
+
+                    <div class="mt-3 d-flex flex-column">
+                        <label>Ejemplares disponibles</label>
+                        <input type="number" class="form-control" name="EjemplaresDisponibles">
+                    </div>
+
+                    <hr>
+                    <button type="submit" class="btn btn-primary w-100">Guardar libro</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Código</th>
+                    <th>Ejemplares</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var libro in Model)
+                {
+                    <tr>
+                        <td>@libro.Id</td>
+                        <td>@libro.Titulo</td>
+                        <td>@libro.Autor</td>
+                        <td>@libro.Codigo</td>
+                        <td>@libro.EjemplaresDisponibles</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <a href="/Home/Index" class="btn btn-secondary mt-3">Volver a inicio</a>
+    </div>
+</div>

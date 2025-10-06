@@ -1,0 +1,39 @@
+@model BibliotecaMVC.Models.Usuario
+
+<h1>Detalles del Usuario</h1>
+
+@if (ViewBag.Error != null)
+{
+    <div>@ViewBag.Error</div>
+}
+else if (Model != null)
+{
+    <table class="table table-bordered">
+        <tr>
+            <th>ID</th>
+            <td>@Model.Id</td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td>@Model.Nombre</td>
+        </tr>
+        <tr>
+            <th>Documento</th>
+            <td>@Model.Documento</td>
+        </tr>
+        <tr>
+            <th>Correo</th>
+            <td>@Model.Correo</td>
+        </tr>
+        <tr>
+            <th>Teléfono</th>
+            <td>@Model.Telefono</td>
+        </tr>
+    </table>
+}
+else
+{
+    <p>No se encontró el usuario solicitado.</p>
+}
+
+<a asp-action="Index" class="btn btn-secondary mt-3">Volver</a>

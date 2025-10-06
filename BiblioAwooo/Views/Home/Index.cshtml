@@ -1,0 +1,16 @@
+﻿<h1>Biblioteca</h1>
+<p>Gestionar usuarios, libros y préstamos</p>
+
+<div style="display: flex; flex-direction: column; gap: 1rem; max-width: 300px;">
+    <a asp-controller="Usuario" asp-action="Index" class="btn btn-primary" style="padding:10px; text-align:center;">
+        Gestión de Usuarios
+    </a>
+
+    <a asp-controller="Libro" asp-action="Index" class="btn btn-success" style="padding:10px; text-align:center;">
+        Gestión de Libros
+    </a>
+
+    <a asp-controller="Prestamo" asp-action="Index" class="btn btn-warning" style="padding:10px; text-align:center;">
+        Gestión de Préstamos
+    </a>
+</div>

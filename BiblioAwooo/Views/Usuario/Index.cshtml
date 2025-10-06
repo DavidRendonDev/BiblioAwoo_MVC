@@ -1,0 +1,50 @@
+@model IEnumerable<BibliotecaMVC.Models.Usuario>
+
+<h1>Gestión de Usuarios</h1>
+
+<p>Desde aquí puedes agregar, ver o eliminar usuarios registrados.</p>
+
+<div style="margin-bottom: 15px;">
+    <a asp-action="Create" style="background-color: #007bff; color: white; padding: 6px 12px; border-radius: 5px; text-decoration: none;">
+        Agregar Usuario
+    </a>
+    <a asp-controller="Home" asp-action="Index" style="background-color: #6c757d; color: white; padding: 6px 12px; border-radius: 5px; text-decoration: none; margin-left: 10px;">
+        Volver al Inicio
+    </a>
+</div>
+
+<table border="1" cellspacing="0" cellpadding="8" style="border-collapse: collapse; width: 100%; text-align: left;">
+    <thead style="background-color: #f2f2f2;">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (Model != null && Model.Any())
+    {
+        foreach (var usuario in Model)
+        {
+            <tr>
+                <td>@usuario.Id</td>
+                <td>@usuario.Nombre</td>
+                <td>@usuario.Correo</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@usuario.Id" 
+                       style="background-color: #17a2b8; color: white; padding: 4px 10px; border-radius: 4px; text-decoration: none;">
+                        Ver
+                    </a>
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="4" style="text-align:center;">No hay usuarios registrados.</td>
+        </tr>
+    }
+    </tbody>
+</table>

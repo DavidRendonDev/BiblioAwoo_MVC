@@ -1,0 +1,75 @@
+@model IEnumerable<BibliotecaMVC.Models.Prestamo>
+
+<h1>Gestión de Préstamos</h1>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="Crear" method="post">
+                    <div class="mt-3 d-flex flex-column">
+                        <label>Usuario</label>
+                        <select class="form-control" name="UsuarioId">
+                            <option value="">Selecciona un usuario</option>
+                            @foreach (var usuario in (List<BibliotecaMVC.Models.Usuario>)ViewBag.Usuarios)
+                            {
+                                <option value="@usuario.Id">@usuario.Nombre</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="mt-3 d-flex flex-column">
+                        <label>Libro</label>
+                        <select class="form-control" name="LibroId">
+                            <option value="">Selecciona un libro</option>
+                            @foreach (var libro in (List<BibliotecaMVC.Models.Libro>)ViewBag.Libros)
+                            {
+                                <option value="@libro.Id">@libro.Titulo (@libro.EjemplaresDisponibles disponibles)</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="mt-3 d-flex flex-column">
+                        <label>Fecha de devolución</label>
+                        <input type="date" class="form-control" name="FechaDevolucion">
+                    </div>
+
+                    <hr>
+                    <button type="submit" class="btn btn-primary w-100">Registrar préstamo</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Usuario</th>
+                    <th>Libro</th>
+                    <th>Fecha préstamo</th>
+                    <th>Fecha devolución</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in Model)
+                {
+                    <tr>
+                        <td>@p.Id</td>
+                        <td>@p.Usuario.Nombre</td>
+                        <td>@p.Libro.Titulo</td>
+                        <td>@p.FechaPrestamo.ToShortDateString()</td>
+                        <td>@p.FechaDevolucion.ToShortDateString()</td>
+                        <td>
+                            <a class="btn btn-success" asp-action="Devolver" asp-route-id="@p.Id">Devolver</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<a href="/Home/Index" class="btn btn-secondary mt-3">Volver</a>

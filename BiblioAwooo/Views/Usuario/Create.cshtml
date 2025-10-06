@@ -1,0 +1,35 @@
+@model BibliotecaMVC.Models.Usuario
+
+<h1>Registrar nuevo usuario</h1>
+
+@if (ViewBag.Error != null)
+{
+    <div>@ViewBag.Error</div>
+}
+
+<form asp-action="Create" method="post">
+    <table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse;">
+        <tr>
+            <td>Nombre</td>
+            <td><input asp-for="Nombre" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>Documento</td>
+            <td><input asp-for="Documento" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>Correo</td>
+            <td><input asp-for="Correo" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>Teléfono</td>
+            <td><input asp-for="Telefono" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:center;">
+                <button type="submit" class="btn btn-success">Guardar</button>
+                <a asp-action="Index" class="btn btn-secondary">Volver</a>
+            </td>
+        </tr>
+    </table>
+</form>
